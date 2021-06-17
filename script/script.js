@@ -1,60 +1,54 @@
 //'use strict'
-let selector, height, width, bg, fontSize;
-// получаю значения переменных
-// selector = prompt('введите селектор');
-// console.log(selector);
-// height = +prompt('введите высоту элемента');
-// console.log(height);
-// width = +prompt('введите ширину элемента');
-// console.log(width);
-// bg = prompt('введите цвет фона элемента');
-// console.log(bg);
-// fontSize = +prompt('введите размер шрифта');
-// console.log(fontSize);
-// создаю класс
+// объявляю переменные
+let selector, height, width, background, fontSize, memo;
 
-let selector, height, width, bg, fontSize;
-// получаю значения переменных
-const obj = newDomElement (
+// создаю объект
+const obj = new DomElement (
         selector = prompt('введите селектор'),        
         height = +prompt('введите высоту элемента'),
         width = +prompt('введите ширину элемента'),
         background = prompt('введите цвет фона элемента'),
-        fontSize = +prompt('введите размер шрифта'),
-)
-
+        fontSize = +prompt('введите размер шрифта')
+);
+const resource = new DomElement (
+        selector = prompt('введите селектор'),        
+        height = +prompt('введите высоту элемента'),
+        width = +prompt('введите ширину элемента'),
+        background = prompt('введите цвет фона элемента'),
+        fontSize = +prompt('введите размер шрифта')
+);
 // создаю класс
-function DomElement(this.selector, this.height, this.width, this.background, this.fontSize){
-}; 
-DomElement.prototype.createElem = function() {
-if(this.selector[0] === '.') {
-                 body.innerHTML = `<div class="text-block"></div>`;
-this.selector.style.cssText = `${'this.height'px}; ${'this.width'px}; ${this.background}; ${'this.fontSize'px}` ;
-
-                       
+function DomElement(selector, height, width, background, fontSize){
+        this.selector = selector;
+        this.height = height;
+        this.width = width;
+        this.background = background;
+        this.fontSize = fontSize;
 }
+DomElement(selector, height, width, background, fontSize);
 // создаю элемент
-   
+DomElement.prototype.createElem = function() {
 //проверяю что введено
-        
-             // добавляю значение для элемента
-                    
-                   
+        if(this.selector[0] === '.') {
+                 document.body.innerHTML = `<div class=${this.selector.substr(1)}>${this.memo}</div>`;
+                 const elem = document.querySelector(this.selector); 
+// получаю стили                 
+                    elem.style.cssText = `height:${this.height}px; width:${this.width}px; background:${this.background}; fontSize:${this.fontSize}px;` ;
+
+//проверяю что введено                       
+        } else if  (this.selector[0] === '#') {
+        document.body.innerHTML = `<p id=${this.selector.substr(1)}>${this.memo}</p>`;
+        const elem = document.querySelector(this.selector); 
 // получаю стили
-                     
-
-                //     console.log( computedStyle.selector);
-                //     console.log( computedStyle.height ); 
-                //     console.log( computedStyle.width ); 
-                //     console.log( computedStyle.background );
-                //     console.log( computedStyle.fontSize );
-
-        //     } else if (selector[0] === '#') {
-        //     const blockId = document.createElement('p');
-        //             blockId.innerHTML = '<p id="text-pragraf"></p>';
-        //             console.log(blockId);
-        //             document.body.append(blockId);
-        //     } return;
-        // };      createElem();       
-        //     };
-        //             newDomElement()
+            elem.style.cssText = `height:${this.height}px; width:${this.width}px; background:${this.background}; fontSize:${this.fontSize}px;` ;
+} //return;
+};
+DomElement.prototype.text = function(){
+        this.memo = prompt('Введите текст заметки');
+};
+// вызов первого объекта
+obj.text();
+obj.createElem();
+//вызов второго объекта
+// resource.text();
+// resource.createElem();  //пока закомментировал
