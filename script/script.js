@@ -30,18 +30,18 @@ DomElement(selector, height, width, background, fontSize);
 DomElement.prototype.createElem = function() {
 //проверяю что введено
         if(this.selector[0] === '.') {
-                 document.body.innerHTML = `<div class=${this.selector.substr(1)}>${this.memo}</div>`;
-                 const elem = document.querySelector(this.selector); 
+                 document.body.innerHTML += `<div class=${this.selector.substr(1)}>${this.memo}</div>`;
+                 let elem = document.querySelector(this.selector); 
 // получаю стили                 
                     elem.style.cssText = `height:${this.height}px; width:${this.width}px; background:${this.background}; fontSize:${this.fontSize}px;` ;
 
 //проверяю что введено                       
         } else if  (this.selector[0] === '#') {
-        document.body.innerHTML = `<p id=${this.selector.substr(1)}>${this.memo}</p>`;
-        const elem = document.querySelector(this.selector); 
+        document.body.innerHTML += `<p id=${this.selector.substr(1)}>${this.memo}</p>`;
+        let elem = document.querySelector(this.selector); 
 // получаю стили
             elem.style.cssText = `height:${this.height}px; width:${this.width}px; background:${this.background}; fontSize:${this.fontSize}px;` ;
-} //return;
+} return;
 };
 DomElement.prototype.text = function(){
         this.memo = prompt('Введите текст заметки');
@@ -50,5 +50,5 @@ DomElement.prototype.text = function(){
 obj.text();
 obj.createElem();
 //вызов второго объекта
-// resource.text();
-// resource.createElem();  //пока закомментировал
+resource.text();
+resource.createElem();  //пока закомментировал
